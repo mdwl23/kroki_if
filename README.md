@@ -17,8 +17,12 @@ krokiサーバへテキストデータを送信して、画像データを取得
 - サーバを起動する
     - 事前にコンテンツのデプロイ先となるディレクトリを用意しておく
     - ./docker/ へ移動して、docker buildすることでdocker imageを作成
+        >docker build --tag kroki_if_web .
     - docker runにてポートとボリュームの設定を実施する
-        - 用意しておいたディレクトリをボリュームとしてマウント
+        - >docker run -d -p 8080:8000 -v /mnt/e/dev/web/:/app -t kroki_if_web
+            - 用意しておいたディレクトリをボリュームとしてマウントすること
+            - 用意しておいたディレクトリにあらかじめコンテンツを入れてないとエラーになるので注意
+                - 今回の場合はflaskのsrc/app.py
     - [参考サイト](https://zenn.dev/4kzknt/articles/1baf245b3caca8)
 - コンテンツを更新する
     - ボリューム設定でマウントしてあるホスト側のディレクトリにコンテンツのファイルをデプロイ
