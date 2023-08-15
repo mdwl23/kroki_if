@@ -34,7 +34,7 @@ class Kroki:
 def index():
     text_data = "digraph G {\n  Hello->World->Hogehoge\n}"
     # Create Kroki instance
-    kroki = Kroki()
+    kroki = Kroki(host="kroki", port=8000)
     # Call send_data method and get image binary data
     image_bytes = kroki.send_data(text_data)
     # Return image binary data as SVG format
