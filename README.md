@@ -41,4 +41,9 @@ app.pyと同じディレクトリで下記コマンドを実行する。
 
 上記コマンドを実行後、 http://localhost:5000/ で動作確認用の簡易webサーバへアクセス可能。
 
+## docker上のkrokiサーバと通信する
+krokiサーバも同一マシン上のdockerコンテナで動いてる場合は、docker-compose.ymlを使ってコンテナ同士で通信できるようにする。
+docker/ へ移動し以下コマンドを実行。
+> sudo docker-compose up -d
+
 [kroki](https://kroki.io/)

@@ -1,0 +1,18 @@
+version: "3"
+services:
+  kroki:
+    image: yuzutech/kroki
+    ports:
+      - "8000:8000"
+    networks:
+      - mynet
+  kroki_if_web:
+    image: kroki_if_web
+    ports:
+      - "8080:8000"
+    volumes:
+      - /mnt/e/dev/web/:/app
+    networks:
+      - mynet
+networks:
+  mynet:
