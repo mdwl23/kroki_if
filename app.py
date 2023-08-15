@@ -32,11 +32,7 @@ class Kroki:
 
 @app.route("/")
 def index():
-    # Get text data and size from query parameters
-    text_data = request.args.get("text_data", "")
-    size = request.args.get("size", "(8, 6)")
-    # Evaluate size as a tuple of integers
-    size = eval(size)
+    text_data = "digraph G {\n  Hello->World->Hogehoge\n}"
     # Create Kroki instance
     kroki = Kroki()
     # Call send_data method and get image binary data
