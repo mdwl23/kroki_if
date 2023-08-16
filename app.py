@@ -32,8 +32,31 @@ class Kroki:
 
 @app.route("/")
 def index():
-    text_data = "digraph G {\n  Hello->World->Hogehoge\n}"
+    # Render HTML template with form and input tags
+    return """
+    <!DOCTYPE html>
+    <html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dragon Generator</title>
+    </head>
+    <body>
+        <h1>Dragon Generator</h1>
+        <p>Graphvizのテキストデータを入力してください。</p>
+        <form action="/" method="POST">
+            <textarea name="text_data" rows="10" cols="50"></textarea>
+            <input type="submit" value="送信">
+        </form>
+    </body>
+    </html>
+    """
+
+@app.route("/", methods=["POST"])
+def generate():
+    # Get text data from form
+    text_data = request.form["text_data"]
     # Create Kroki instance
+    # kroki = Kroki(host="localhost", port=8000)
     kroki = Kroki(host="kroki", port=8000)
     # Call send_data method and get image binary data
     image_bytes = kroki.send_data(text_data)
