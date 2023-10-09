@@ -69,7 +69,7 @@ def index():
         <h1>Dragon Generator</h1>
         <p>Graphvizのテキストデータを入力してください。</p>
         <form onsubmit="submitForm(event)">
-            <textarea name="text_data" rows="10" cols="50">digraph G {\n  Hello->World\n}</textarea>
+            <textarea name="text_data" rows="10" cols="50">digraph G {\n  graph [fontname = "Meiryo UI"];\n  node [fontname = "Meiryo UI"];\n  edge [fontname = "Meiryo UI"];\n  Hello->World\n}</textarea>
             <input type="submit" value="送信">
         </form>
         <img id="image" src="">
