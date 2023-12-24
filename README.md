@@ -2,6 +2,14 @@
 
 krokiサーバへテキストデータを送信して、画像データを取得するためのインターフェースツール
 
+# Quick Start
+```bash
+cd docker
+docker build --tag kroki_if_web .
+sudo docker-compose up -d
+```
+
+
 # アーキテクチャ
 - コア機能
     - テキストデータをバイナリ変換してサーバへ送信する機能
