@@ -2,12 +2,23 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>Dragon Generator</title>
+    <title>GraphCraft</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* グローバルなフォント指定（例：Arial） */
+        }
+        textarea {
+            font-family: monospace; /* テキストエリア内のフォント指定 */
+        }
+    </style>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 <body>
-    <h1>Dragon Generator</h1>
-    <p>GraphvizまたはMermaidのテキストデータを入力してください。</p>
+    <h1>GraphCraft</h1>
+    <p>Select diagram type:</p>
+    <input type="radio" name="diagram_type" value="graphviz" checked> Graphviz
+    <input type="radio" name="diagram_type" value="mermaid"> Mermaid
+
     <form onsubmit="submitForm(event)">
         <textarea name="text_data" rows="10" cols="50">digraph G {
           graph [fontname = "Meiryo UI"];
@@ -15,12 +26,8 @@
           edge [fontname = "Meiryo UI"];
           Hello->World
         }</textarea>
-        
-        <p>Select diagram type:</p>
-        <input type="radio" name="diagram_type" value="graphviz" checked> Graphviz
-        <input type="radio" name="diagram_type" value="mermaid"> Mermaid
-        
-        <input type="submit" value="送信">
+
+        <input type="submit" value="Generate">
     </form>
     <img id="image" src="">
 </body>
