@@ -1,7 +1,6 @@
-from flask import Flask, request
+from flask import Flask, render_template, request, jsonify
 import base64
 import zlib
-import requests
 
 app = Flask(__name__)
 
@@ -26,74 +25,9 @@ class Kroki:
         # Return URL as string
         return url
 
-
 @app.route("/")
 def index():
-    # Render HTML template with form, input, and img tags
-    return """
-    <!DOCTYPE html>
-    <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>Dragon Generator</title>
-        <script>
-            // Define a function to handle form submission
-            function submitForm(event) {
-                // Prevent default behavior of form submission
-                event.preventDefault();
-                
-                // Create XMLHttpRequest object
-                var xhr = new XMLHttpRequest();
-                
-                // Open POST request to root path asynchronously
-                xhr.open("POST", "/", true);
-                
-                // Set request header for form data
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                
-                // Define a function to handle response
-                xhr.onreadystatechange = function() {
-                    // Check if ready state is 4 (done) and status is 200 (OK)
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        // Get image URL from response text
-                        var imageUrl = xhr.responseText;
-                        // Get image element by id
-                        var image = document.getElementById("image");
-                        // Set image source attribute to image URL
-                        image.src = imageUrl;
-                    }
-                };
-                
-                // Get text data from form element by name
-                var textData = document.forms[0].elements["text_data"].value;
-                
-                // Get selected diagram type
-                var diagramType = document.querySelector('input[name="diagram_type"]:checked').value;
-                
-                // Encode text data with encodeURIComponent function
-                var encodedTextData = encodeURIComponent(textData);
-                
-                // Send request with encoded text data and diagram type as parameters
-                xhr.send("text_data=" + encodedTextData + "&diagram_type=" + diagramType);
-            }
-        </script>
-    </head>
-    <body>
-        <h1>Dragon Generator</h1>
-        <p>Graphvizのテキストデータを入力してください。</p>
-            <form onsubmit="submitForm(event)">
-                <textarea name="text_data" rows="10" cols="50">digraph G {\n  graph [fontname = "Meiryo UI"];\n  node [fontname = "Meiryo UI"];\n  edge [fontname = "Meiryo UI"];\n  Hello->World\n}</textarea>
-                
-                <p>Select diagram type:</p>
-                <input type="radio" name="diagram_type" value="graphviz" checked> Graphviz
-                <input type="radio" name="diagram_type" value="mermaid"> Mermaid
-                
-                <input type="submit" value="送信">
-            </form>
-        <img id="image" src="">
-    </body>
-    </html>
-    """
+    return render_template("index.html")
 
 @app.route("/", methods=["POST"])
 def generate():
@@ -115,3 +49,6 @@ def generate():
 
     # Return image URL as plain text
     return image_url, 200, {"Content-Type": "text/plain"}
+
+if __name__ == "__main__":
+    app.run(debug=True)

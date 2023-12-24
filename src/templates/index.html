@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Dragon Generator</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <h1>Dragon Generator</h1>
+    <p>GraphvizまたはMermaidのテキストデータを入力してください。</p>
+    <form onsubmit="submitForm(event)">
+        <textarea name="text_data" rows="10" cols="50">digraph G {
+          graph [fontname = "Meiryo UI"];
+          node [fontname = "Meiryo UI"];
+          edge [fontname = "Meiryo UI"];
+          Hello->World
+        }</textarea>
+        
+        <p>Select diagram type:</p>
+        <input type="radio" name="diagram_type" value="graphviz" checked> Graphviz
+        <input type="radio" name="diagram_type" value="mermaid"> Mermaid
+        
+        <input type="submit" value="送信">
+    </form>
+    <img id="image" src="">
+</body>
+</html>
