@@ -29,3 +29,15 @@ function submitForm(event) {
     // Send request with encoded text data and diagram type as parameters
     xhr.send("text_data=" + encodedTextData + "&diagram_type=" + diagramType);
 }
+
+// Function to change the content of the text area based on the selected diagram type
+function changeTextArea(diagramType) {
+    var textArea = document.getElementById("text_data");
+    if (diagramType === "graphviz") {
+        // Set Graphviz code in the text area
+        textArea.value = 'digraph G {\n  graph [fontname = "Meiryo UI"];\n  node [fontname = "Meiryo UI"];\n  edge [fontname = "Meiryo UI"];\n  Hello->World\n}';
+    } else if (diagramType === "mermaid") {
+        // Set Mermaid code in the text area
+        textArea.value = 'graph TD\n  A[Hello] -->|World| B[World]';
+    }
+}
