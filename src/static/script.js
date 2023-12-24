@@ -39,5 +39,8 @@ function changeTextArea(diagramType) {
     } else if (diagramType === "mermaid") {
         // Set Mermaid code in the text area
         textArea.value = 'graph TD\n  A[Hello] -->|World| B[World]';
+    } else if (diagramType === "plantuml") {
+        // Set PlantUML code in the text area
+        textArea.value = 'skinparam defaultFontName Meiryo\n\nrectangle "hello" as hello\nrectangle "world" as world\nhello-->world';
     }
 }

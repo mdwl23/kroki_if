@@ -41,6 +41,8 @@ def generate():
     # Determine the diagram library and call the appropriate method
     if diagram_type == "graphviz":
         image_url = kroki.send_data(text_data, diagram_library="graphviz")
+    elif diagram_type == "plantuml":
+        image_url = kroki.send_data(text_data, diagram_library="plantuml")
     elif diagram_type == "mermaid":
         image_url = kroki.send_data(text_data, diagram_library="mermaid")
     else:
