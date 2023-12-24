@@ -12,7 +12,6 @@ services:
       - "8080:8000"
     volumes:
       - ../:/app
-      # - /mnt/e/dev/web/:/app
     networks:
       - mynet
 networks:

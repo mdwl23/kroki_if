@@ -6,7 +6,7 @@ krokiサーバへテキストデータを送信して、画像データを取得
 ```bash
 cd docker
 docker build --tag kroki_if_web .
-sudo docker-compose up -d
+docker-compose up -d
 ```
 
 
