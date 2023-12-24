@@ -1,0 +1,16 @@
+skinparam defaultFontName Meiryo
+left to right direction
+
+actor user
+rectangle docker-compose{
+  rectangle container as c1{
+    rectangle "kroki_if" as kroki_if
+  }
+  rectangle container as c2{
+    rectangle "kroki" as kroki
+  }
+}
+
+user-->kroki_if: ブラウザから操作
+kroki_if-->kroki: url
+kroki-->user: 画像
