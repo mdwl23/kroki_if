@@ -1,8 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 import base64
 import zlib
+import configparser
 
 app = Flask(__name__)
+
+config_file="src/config.ini"
+config = configparser.ConfigParser()
+config.read(config_file)
 
 class Kroki:
     def __init__(self, host="localhost", port=8000):
@@ -36,7 +41,7 @@ def generate():
     diagram_type = request.form["diagram_type"]
 
     # Create Kroki instance
-    kroki = Kroki(host="localhost", port=8000)
+    kroki = Kroki(host=config.get("Server", "host"), port=config.get("Server", "port"))
 
     # Determine the diagram library and call the appropriate method
     if diagram_type == "graphviz":

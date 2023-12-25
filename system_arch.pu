@@ -2,7 +2,7 @@ skinparam defaultFontName Meiryo
 left to right direction
 
 actor user
-rectangle docker-compose{
+rectangle Server(docker-compose){
   rectangle container as c1{
     rectangle "kroki_if" as kroki_if
   }
@@ -13,4 +13,5 @@ rectangle docker-compose{
 
 user-->kroki_if: ブラウザから操作
 kroki_if-->kroki: url
-kroki-->user: 画像
+kroki-->kroki_if: 画像
+kroki_if-->user: SVG

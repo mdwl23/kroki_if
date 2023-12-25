@@ -19,6 +19,10 @@ docker-compose up -d
 - テキストエリアへコードを入力
 - Generateボタンを押す
 
+## サーバを変更する
+- src/config.iniの内容を書き換える
+    - サーバのアドレスとポートを設定する
+- kroki_ifのdockerコンテナを再起動する
 
 ## webアプリを更新する
 - app.pyやそこから呼ばれているhtml、javascript等を更新
