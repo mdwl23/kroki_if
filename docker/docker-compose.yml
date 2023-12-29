@@ -2,8 +2,18 @@ version: "3"
 services:
   kroki:
     image: yuzutech/kroki
+    depends_on:
+      - mermaid
+    environment:
+      - KROKI_MERMAID_HOST=mermaid
     ports:
       - "8000:8000"
+    networks:
+      - mynet
+  mermaid:
+    image: yuzutech/kroki-mermaid
+    expose:
+      - "8002"
     networks:
       - mynet
   kroki_if_web:

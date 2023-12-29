@@ -9,9 +9,13 @@ rectangle Server(docker-compose){
   rectangle container as c2{
     rectangle "kroki" as kroki
   }
+  rectangle container as c3{
+    rectangle "kroki-mermaid" as kroki_mermaid
+  }
 }
 
 user-->kroki_if: ブラウザから操作
 kroki_if-->kroki: url
 kroki-->kroki_if: 画像
 kroki_if-->user: SVG
+kroki<-->kroki_mermaid
